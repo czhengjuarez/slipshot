@@ -1,0 +1,1 @@
+ALTER TABLE `character_sections` ADD `layout` text DEFAULT 'full' NOT NULL;

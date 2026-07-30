@@ -9,12 +9,14 @@ type Character = {
 	accentColor: string;
 	quote: string | null;
 	bio: string | null;
-	portraitImageKey: string | null;
+	thumbnailImageKey: string | null;
+	heroImageKey: string | null;
 	status: "draft" | "published";
 };
 
 export function CharacterForm({ character }: { character?: Character }) {
-	const portraitUrl = mediaUrl(character?.portraitImageKey);
+	const thumbnailUrl = mediaUrl(character?.thumbnailImageKey);
+	const heroUrl = mediaUrl(character?.heroImageKey);
 
 	return (
 		<form action={upsertCharacter}>
@@ -49,14 +51,14 @@ export function CharacterForm({ character }: { character?: Character }) {
 
 			<div className="form-group">
 				<label className="form-label" htmlFor="quote">
-					Quote
+					Quote (short tagline shown in the hero)
 				</label>
 				<input className="form-input" id="quote" name="quote" defaultValue={character?.quote ?? ""} />
 			</div>
 
 			<div className="form-group">
 				<label className="form-label" htmlFor="bio">
-					Bio
+					Bio (intro copy shown below the hero)
 				</label>
 				<textarea
 					className="form-input"
@@ -69,10 +71,17 @@ export function CharacterForm({ character }: { character?: Character }) {
 			</div>
 
 			<div className="form-group">
-				<label className="form-label" htmlFor="portrait">
-					Portrait image
+				<label className="form-label" htmlFor="thumbnail">
+					Thumbnail image (shown in the character grid)
 				</label>
-				<ImageUploadField id="portrait" name="portrait" currentImageUrl={portraitUrl} />
+				<ImageUploadField id="thumbnail" name="thumbnail" currentImageUrl={thumbnailUrl} />
+			</div>
+
+			<div className="form-group">
+				<label className="form-label" htmlFor="hero">
+					Hero image (shown in the top section of the character page)
+				</label>
+				<ImageUploadField id="hero" name="hero" currentImageUrl={heroUrl} />
 			</div>
 
 			<div className="form-group">
@@ -98,6 +107,11 @@ export function CharacterForm({ character }: { character?: Character }) {
 				<a href="/admin/characters" className="btn-ghost">
 					Cancel
 				</a>
+				{character && (
+					<a href={`/admin/characters/${character.id}/sections`} className="btn-ghost">
+						Manage Story Sections →
+					</a>
+				)}
 			</div>
 		</form>
 	);

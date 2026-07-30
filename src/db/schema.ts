@@ -37,10 +37,33 @@ export const characters = sqliteTable("characters", {
 	accentColor: text("accent_color").notNull(),
 	quote: text("quote"),
 	bio: text("bio"),
-	portraitImageKey: text("portrait_image_key"),
+	// Small image for the character grid / homepage tile.
+	thumbnailImageKey: text("thumbnail_image_key"),
+	// Larger image for the character detail page's top hero panel.
+	heroImageKey: text("hero_image_key"),
 	status: text("status", { enum: ["draft", "published"] })
 		.notNull()
 		.default("draft"),
+	...timestamps,
+});
+
+// Repeatable story blocks on a character's detail page (heading + copy +
+// an optional image each), e.g. "Escape", "First Blush". A character can
+// have any number of these, including zero.
+export const characterSections = sqliteTable("character_sections", {
+	id: integer("id").primaryKey({ autoIncrement: true }),
+	characterId: integer("character_id")
+		.notNull()
+		.references(() => characters.id, { onDelete: "cascade" }),
+	position: integer("position").notNull().default(0),
+	title: text("title"),
+	body: text("body"),
+	imageKey: text("image_key"),
+	// "full": image full-width, text below. "image-left": narrow image column
+	// left, wide copy right. "image-right": wide copy left, narrow image right.
+	layout: text("layout", { enum: ["full", "image-left", "image-right"] })
+		.notNull()
+		.default("full"),
 	...timestamps,
 });
 

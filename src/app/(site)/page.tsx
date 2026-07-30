@@ -3,6 +3,7 @@ import { getDb } from "@/db";
 import { books, characters } from "@/db/schema";
 import { mediaUrl } from "@/lib/media";
 import { subscribeToList } from "./join-the-list/actions";
+import { CharacterTile } from "@/components/CharacterTile";
 
 export default async function Home() {
 	const db = await getDb();
@@ -28,7 +29,7 @@ export default async function Home() {
 				.limit(6)
 		: [];
 
-	const featuredPortraitUrl = mediaUrl(featuredCharacter?.portraitImageKey);
+	const featuredHeroUrl = mediaUrl(featuredCharacter?.heroImageKey ?? featuredCharacter?.thumbnailImageKey);
 
 	return (
 		<div>
@@ -82,15 +83,22 @@ export default async function Home() {
 			{featuredCharacter && (
 				<section>
 					<div className="char-card">
-						<div
-							className="char-card-art"
-							style={{
-								background: featuredPortraitUrl
-									? `url(${featuredPortraitUrl}) center/cover`
-									: featuredCharacter.accentColor,
-							}}
-						>
+						<div className="char-card-art" style={{ background: featuredCharacter.accentColor }}>
 							<div className="dot-overlay" />
+							{featuredHeroUrl && (
+								// eslint-disable-next-line @next/next/no-img-element
+								<img
+									src={featuredHeroUrl}
+									alt=""
+									style={{
+										position: "relative",
+										zIndex: 1,
+										width: "100%",
+										height: "100%",
+										objectFit: "contain",
+									}}
+								/>
+							)}
 						</div>
 						<div className="char-card-content">
 							<div className="dot-overlay" />
@@ -119,17 +127,7 @@ export default async function Home() {
 				{otherCharacters.length > 0 ? (
 					<div className="char-grid">
 						{otherCharacters.map((character) => (
-							<a key={character.id} href={`/characters/${character.slug}`} className="char-tile">
-								<div
-									className="char-tile-bg"
-									style={{
-										background: mediaUrl(character.portraitImageKey)
-											? `url(${mediaUrl(character.portraitImageKey)}) center/cover`
-											: character.accentColor,
-									}}
-								/>
-								<span className="char-tile-name">{character.name}</span>
-							</a>
+							<CharacterTile key={character.id} character={character} />
 						))}
 					</div>
 				) : (

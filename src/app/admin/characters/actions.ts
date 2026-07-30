@@ -9,12 +9,17 @@ import { uploadMedia } from "@/lib/media";
 
 export async function upsertCharacter(formData: FormData) {
 	const id = formData.get("id") as string | null;
-	const portrait = formData.get("portrait") as File | null;
+	const thumbnail = formData.get("thumbnail") as File | null;
+	const hero = formData.get("hero") as File | null;
 
 	const db = await getDb();
-	let portraitImageKey: string | undefined;
-	if (portrait && portrait.size > 0) {
-		portraitImageKey = await uploadMedia(portrait, "characters");
+	let thumbnailImageKey: string | undefined;
+	if (thumbnail && thumbnail.size > 0) {
+		thumbnailImageKey = await uploadMedia(thumbnail, "characters");
+	}
+	let heroImageKey: string | undefined;
+	if (hero && hero.size > 0) {
+		heroImageKey = await uploadMedia(hero, "characters");
 	}
 
 	const values = {
@@ -25,7 +30,8 @@ export async function upsertCharacter(formData: FormData) {
 		bio: String(formData.get("bio") ?? ""),
 		status: formData.get("status") === "published" ? ("published" as const) : ("draft" as const),
 		updatedAt: new Date().toISOString(),
-		...(portraitImageKey ? { portraitImageKey } : {}),
+		...(thumbnailImageKey ? { thumbnailImageKey } : {}),
+		...(heroImageKey ? { heroImageKey } : {}),
 	};
 
 	if (id) {

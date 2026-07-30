@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	/* config options here */
+	experimental: {
+		serverActions: {
+			// Default is 1MB, which full character illustrations easily exceed —
+			// admin image uploads go through Server Actions as multipart FormData.
+			bodySizeLimit: "20mb",
+		},
+	},
 };
 
 export default nextConfig;

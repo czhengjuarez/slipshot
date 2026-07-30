@@ -15,6 +15,27 @@
       "when": 1785422160954,
       "tag": "0001_fancy_rattler",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1785423494232,
+      "tag": "0002_hesitant_puff_adder",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785423519571,
+      "tag": "0003_simple_iron_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1785429337111,
+      "tag": "0004_remarkable_black_queen",
+      "breakpoints": true
     }
   ]
 }

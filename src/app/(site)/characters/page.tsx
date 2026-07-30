@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { getDb } from "@/db";
 import { characters } from "@/db/schema";
-import { mediaUrl } from "@/lib/media";
+import { CharacterTile } from "@/components/CharacterTile";
 
 export default async function CharactersPage() {
 	const db = await getDb();
@@ -24,17 +24,7 @@ export default async function CharactersPage() {
 			{rows.length > 0 ? (
 				<div className="char-grid">
 					{rows.map((character) => (
-						<a key={character.id} href={`/characters/${character.slug}`} className="char-tile">
-							<div
-								className="char-tile-bg"
-								style={{
-									background: mediaUrl(character.portraitImageKey)
-										? `url(${mediaUrl(character.portraitImageKey)}) center/cover`
-										: character.accentColor,
-								}}
-							/>
-							<span className="char-tile-name">{character.name}</span>
-						</a>
+						<CharacterTile key={character.id} character={character} />
 					))}
 				</div>
 			) : (

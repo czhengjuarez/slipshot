@@ -1,13 +1,16 @@
 import { upsertArtPiece } from "./actions";
 import { mediaUrl } from "@/lib/media";
 import { ImageUploadField } from "../ImageUploadField";
+import { ART_CATEGORIES } from "@/lib/artCategories";
 
 type ArtPiece = {
 	id: number;
 	title: string;
 	artistCredit: string | null;
+	caption: string | null;
 	imageKey: string;
 	category: string | null;
+	visibility: "public" | "exclusive";
 };
 
 export function ArtPieceForm({ art }: { art?: ArtPiece }) {
@@ -37,10 +40,45 @@ export function ArtPieceForm({ art }: { art?: ArtPiece }) {
 			</div>
 
 			<div className="form-group">
+				<label className="form-label" htmlFor="caption">
+					Caption (optional, shown after the artist name on hover)
+				</label>
+				<input className="form-input" id="caption" name="caption" defaultValue={art?.caption ?? ""} />
+			</div>
+
+			<div className="form-group">
 				<label className="form-label" htmlFor="category">
 					Category
 				</label>
-				<input className="form-input" id="category" name="category" defaultValue={art?.category ?? ""} />
+				<select
+					className="form-input"
+					id="category"
+					name="category"
+					defaultValue={art?.category ?? ART_CATEGORIES[0]}
+					style={{ width: "auto" }}
+				>
+					{ART_CATEGORIES.map((category) => (
+						<option key={category} value={category}>
+							{category}
+						</option>
+					))}
+				</select>
+			</div>
+
+			<div className="form-group">
+				<label className="form-label" htmlFor="visibility">
+					Visibility
+				</label>
+				<select
+					className="form-input"
+					id="visibility"
+					name="visibility"
+					defaultValue={art?.visibility ?? "public"}
+					style={{ width: "auto" }}
+				>
+					<option value="public">Public — shown on the /art gallery</option>
+					<option value="exclusive">Exclusive — held back (insider content / art book)</option>
+				</select>
 			</div>
 
 			<div className="form-group">

@@ -25,6 +25,7 @@ export default async function ArtListPage() {
 						<th>Title</th>
 						<th>Artist</th>
 						<th>Category</th>
+						<th>Visibility</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -43,6 +44,11 @@ export default async function ArtListPage() {
 							<td>{art.artistCredit ?? "—"}</td>
 							<td>{art.category ?? "—"}</td>
 							<td>
+								<span className={`admin-status admin-status--${art.visibility === "public" ? "published" : "draft"}`}>
+									{art.visibility}
+								</span>
+							</td>
+							<td>
 								<div className="admin-actions">
 									<a href={`/admin/art/${art.id}/edit`}>Edit</a>
 									<form action={deleteArtPiece}>
@@ -57,7 +63,7 @@ export default async function ArtListPage() {
 					))}
 					{rows.length === 0 && (
 						<tr>
-							<td colSpan={5} style={{ color: "rgba(255,255,255,0.4)" }}>
+							<td colSpan={6} style={{ color: "rgba(255,255,255,0.4)" }}>
 								No art yet.
 							</td>
 						</tr>

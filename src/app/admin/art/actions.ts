@@ -20,10 +20,13 @@ export async function upsertArtPiece(formData: FormData) {
 		throw new Error("An image is required for a new art piece.");
 	}
 
+	const visibility = formData.get("visibility") === "exclusive" ? ("exclusive" as const) : ("public" as const);
 	const values = {
 		title: String(formData.get("title")),
 		artistCredit: String(formData.get("artistCredit") ?? ""),
+		caption: String(formData.get("caption") ?? "") || null,
 		category: String(formData.get("category") ?? ""),
+		visibility,
 		...(imageKey ? { imageKey } : {}),
 	};
 

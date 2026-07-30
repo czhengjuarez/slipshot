@@ -1,0 +1,1 @@
+ALTER TABLE `art_pieces` ADD `caption` text;

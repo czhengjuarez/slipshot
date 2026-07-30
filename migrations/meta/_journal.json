@@ -36,6 +36,20 @@
       "when": 1785429337111,
       "tag": "0004_remarkable_black_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1785435332369,
+      "tag": "0005_ancient_moira_mactaggert",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1785437076169,
+      "tag": "0006_equal_gargoyle",
+      "breakpoints": true
     }
   ]
 }

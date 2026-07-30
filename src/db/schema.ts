@@ -86,8 +86,19 @@ export const artPieces = sqliteTable("art_pieces", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
 	title: text("title").notNull(),
 	artistCredit: text("artist_credit"),
+	// Optional short caption shown after the artist name on hover. Not
+	// required — skip display entirely when empty.
+	caption: text("caption"),
 	imageKey: text("image_key").notNull(),
+	// "Character Art" | "Key Art" | "Sketch" — a fixed set (not free text) so
+	// the public gallery's filter pills stay consistent.
 	category: text("category"),
+	// "public": shown on the /art gallery. "exclusive": held back for
+	// insider-only content or a future printed art book — not everything
+	// needs to go on the public site as the collection grows.
+	visibility: text("visibility", { enum: ["public", "exclusive"] })
+		.notNull()
+		.default("public"),
 	createdAt: timestamps.createdAt,
 });
 

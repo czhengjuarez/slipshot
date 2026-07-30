@@ -1,4 +1,4 @@
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, ne, and } from "drizzle-orm";
 import { getDb } from "@/db";
 import { books, characters } from "@/db/schema";
 import { mediaUrl } from "@/lib/media";
@@ -14,11 +14,21 @@ export default async function Home() {
 		.orderBy(desc(books.volumeNumber))
 		.limit(1);
 
-	const featuredCharacters = await db
+	const [featuredCharacter] = await db
 		.select()
 		.from(characters)
 		.where(eq(characters.status, "published"))
-		.limit(6);
+		.limit(1);
+
+	const otherCharacters = featuredCharacter
+		? await db
+				.select()
+				.from(characters)
+				.where(and(eq(characters.status, "published"), ne(characters.id, featuredCharacter.id)))
+				.limit(6)
+		: [];
+
+	const featuredPortraitUrl = mediaUrl(featuredCharacter?.portraitImageKey);
 
 	return (
 		<div>
@@ -58,12 +68,41 @@ export default async function Home() {
 							placeholder="Enter your email address"
 							required
 						/>
-						<button type="submit" className="btn-primary" style={{ display: "block", width: "100%", textAlign: "center" }}>
+						<button
+							type="submit"
+							className="btn-primary"
+							style={{ display: "block", width: "100%", textAlign: "center" }}
+						>
 							Submit
 						</button>
 					</form>
 				</div>
 			</section>
+
+			{featuredCharacter && (
+				<section>
+					<div className="char-card">
+						<div
+							className="char-card-art"
+							style={{
+								background: featuredPortraitUrl
+									? `url(${featuredPortraitUrl}) center/cover`
+									: featuredCharacter.accentColor,
+							}}
+						>
+							<div className="dot-overlay" />
+						</div>
+						<div className="char-card-content">
+							<div className="dot-overlay" />
+							{featuredCharacter.quote && <p className="char-quote">&ldquo;{featuredCharacter.quote}&rdquo;</p>}
+							{featuredCharacter.bio && <p className="char-bio">{featuredCharacter.bio}</p>}
+							<a className="char-link" href={`/characters/${featuredCharacter.slug}`}>
+								{featuredCharacter.name} &gt;&gt;
+							</a>
+						</div>
+					</div>
+				</section>
+			)}
 
 			<section style={{ padding: "var(--space-16) var(--space-8)" }}>
 				<h2
@@ -77,9 +116,9 @@ export default async function Home() {
 				>
 					Meet the Cast
 				</h2>
-				{featuredCharacters.length > 0 ? (
+				{otherCharacters.length > 0 ? (
 					<div className="char-grid">
-						{featuredCharacters.map((character) => (
+						{otherCharacters.map((character) => (
 							<a key={character.id} href={`/characters/${character.slug}`} className="char-tile">
 								<div
 									className="char-tile-bg"
@@ -94,13 +133,9 @@ export default async function Home() {
 						))}
 					</div>
 				) : (
-					<p style={{ color: "rgba(255,255,255,0.4)" }}>Characters coming soon.</p>
+					!featuredCharacter && <p style={{ color: "rgba(255,255,255,0.4)" }}>Characters coming soon.</p>
 				)}
-				<a
-					href="/characters"
-					className="char-link"
-					style={{ display: "inline-block", marginTop: "var(--space-6)" }}
-				>
+				<a href="/characters" className="char-link" style={{ display: "inline-block", marginTop: "var(--space-6)" }}>
 					See all characters →
 				</a>
 			</section>

@@ -26,6 +26,9 @@ export async function upsertBook(formData: FormData) {
 		summary: String(formData.get("summary") ?? ""),
 		status: formData.get("status") === "published" ? ("published" as const) : ("draft" as const),
 		releaseDate: String(formData.get("releaseDate") ?? "") || null,
+		amazonUrl: String(formData.get("amazonUrl") ?? "") || null,
+		bookshopUrl: String(formData.get("bookshopUrl") ?? "") || null,
+		bnUrl: String(formData.get("bnUrl") ?? "") || null,
 		updatedAt: new Date().toISOString(),
 		...(coverImageKey ? { coverImageKey } : {}),
 	};

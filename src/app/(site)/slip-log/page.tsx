@@ -63,10 +63,15 @@ export default async function SlipLogPage() {
 							/>
 							<div className="blog-card-body">
 								{post.category && <span className="type-tag">{post.category}</span>}
-								<h3 style={{ color: "#fff", fontSize: "var(--text-base)", margin: "8px 0" }}>{post.title}</h3>
-								{post.publishedAt && (
-									<p style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>{post.publishedAt.slice(0, 10)}</p>
+								<h3 className="blog-title-display" style={{ fontSize: 18 }}>
+									{post.title}
+								</h3>
+								{post.excerpt && (
+									<p className="blog-excerpt" style={{ fontSize: 12 }}>
+										{post.excerpt}
+									</p>
 								)}
+								{post.publishedAt && <span className="blog-date">{post.publishedAt.slice(0, 10)}</span>}
 							</div>
 						</a>
 					))}

@@ -21,6 +21,9 @@ export const books = sqliteTable("books", {
 		.notNull()
 		.default("draft"),
 	releaseDate: text("release_date"),
+	amazonUrl: text("amazon_url"),
+	bookshopUrl: text("bookshop_url"),
+	bnUrl: text("bn_url"),
 	...timestamps,
 });
 

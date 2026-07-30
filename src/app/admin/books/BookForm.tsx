@@ -11,6 +11,9 @@ type Book = {
 	summary: string | null;
 	status: "draft" | "published";
 	releaseDate: string | null;
+	amazonUrl: string | null;
+	bookshopUrl: string | null;
+	bnUrl: string | null;
 };
 
 export function BookForm({ book }: { book?: Book }) {
@@ -81,6 +84,48 @@ export function BookForm({ book }: { book?: Book }) {
 					type="date"
 					defaultValue={book?.releaseDate ?? ""}
 					style={{ width: 200 }}
+				/>
+			</div>
+
+			<div className="form-group">
+				<label className="form-label" htmlFor="amazonUrl">
+					Buy link — Amazon
+				</label>
+				<input
+					className="form-input"
+					id="amazonUrl"
+					name="amazonUrl"
+					type="url"
+					placeholder="https://amazon.com/..."
+					defaultValue={book?.amazonUrl ?? ""}
+				/>
+			</div>
+
+			<div className="form-group">
+				<label className="form-label" htmlFor="bookshopUrl">
+					Buy link — Bookshop.org
+				</label>
+				<input
+					className="form-input"
+					id="bookshopUrl"
+					name="bookshopUrl"
+					type="url"
+					placeholder="https://bookshop.org/..."
+					defaultValue={book?.bookshopUrl ?? ""}
+				/>
+			</div>
+
+			<div className="form-group">
+				<label className="form-label" htmlFor="bnUrl">
+					Buy link — Barnes &amp; Noble
+				</label>
+				<input
+					className="form-input"
+					id="bnUrl"
+					name="bnUrl"
+					type="url"
+					placeholder="https://barnesandnoble.com/..."
+					defaultValue={book?.bnUrl ?? ""}
 				/>
 			</div>
 

@@ -26,6 +26,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 					<a className="admin-nav-item" href="/admin/art">
 						Art
 					</a>
+					<a className="admin-nav-item" href="/admin/conventions">
+						Conventions
+					</a>
 					<a className="admin-nav-item" href="/" style={{ marginTop: 24, opacity: 0.5 }}>
 						← Back to site
 					</a>

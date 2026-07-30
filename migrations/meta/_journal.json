@@ -57,6 +57,13 @@
       "when": 1785439223140,
       "tag": "0007_fine_angel",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1785442290249,
+      "tag": "0008_nervous_rumiko_fujikawa",
+      "breakpoints": true
     }
   ]
 }

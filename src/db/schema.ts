@@ -105,6 +105,23 @@ export const artPieces = sqliteTable("art_pieces", {
 	createdAt: timestamps.createdAt,
 });
 
+export const conventions = sqliteTable("conventions", {
+	id: integer("id").primaryKey({ autoIncrement: true }),
+	name: text("name").notNull(),
+	description: text("description"),
+	location: text("location"),
+	logoImageKey: text("logo_image_key"),
+	// External link to the convention's own site — Slipshot doesn't host a
+	// detail page per con, the name/logo just link out.
+	websiteUrl: text("website_url"),
+	startDate: text("start_date").notNull(),
+	endDate: text("end_date"),
+	status: text("status", { enum: ["draft", "published"] })
+		.notNull()
+		.default("draft"),
+	...timestamps,
+});
+
 export const subscribers = sqliteTable("subscribers", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
 	email: text("email").notNull().unique(),

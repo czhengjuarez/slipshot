@@ -53,6 +53,12 @@
 			"database_name": "slipshot-db",
 			"database_id": "40b1ad01-d03c-4c13-9ec5-1cdb6f2c93aa"
 		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "MEDIA",
+			"bucket_name": "slipshot-media"
+		}
 	]
 	/**
 	 * Environment Variables

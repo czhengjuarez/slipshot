@@ -1,0 +1,142 @@
+/* Admin-only layout and table styles. Not part of the public Slipshot
+   component library (components.css) — internal tooling, built from the
+   same tokens but with its own layout since there's no public "admin
+   dashboard" pattern to keep in sync with the design system repo. */
+
+.admin-layout {
+	display: flex;
+	min-height: 100vh;
+}
+
+.admin-sidebar {
+	width: 220px;
+	flex-shrink: 0;
+	background: var(--color-black);
+	padding: var(--space-6) var(--space-4);
+	border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-sidebar-title {
+	font-family: var(--font-display);
+	font-size: var(--text-md);
+	text-transform: uppercase;
+	color: var(--color-white);
+	margin-bottom: var(--space-6);
+	display: block;
+}
+
+.admin-nav-item {
+	display: block;
+	font-family: var(--font-body);
+	font-size: var(--text-sm);
+	color: rgba(255, 255, 255, 0.6);
+	text-decoration: none;
+	padding: var(--space-2) var(--space-3);
+	margin-bottom: 2px;
+	border-radius: var(--radius-sm);
+}
+
+.admin-nav-item:hover {
+	color: var(--color-white);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.admin-main {
+	flex: 1;
+	padding: var(--space-8);
+	max-width: 900px;
+}
+
+.admin-page-title {
+	font-family: var(--font-display);
+	font-size: var(--text-2xl);
+	text-transform: uppercase;
+	color: var(--color-white);
+	margin-bottom: var(--space-6);
+}
+
+.admin-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: var(--space-6);
+}
+
+.admin-table th,
+.admin-table td {
+	text-align: left;
+	padding: var(--space-3) var(--space-4);
+	font-size: var(--text-sm);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-table th {
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.4);
+	font-size: 11px;
+}
+
+.admin-table td {
+	color: rgba(255, 255, 255, 0.85);
+}
+
+.admin-table a {
+	color: var(--color-white);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.admin-status {
+	display: inline-block;
+	padding: 2px 8px;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	border-radius: var(--radius-sm);
+}
+
+.admin-status--published {
+	background: rgba(88, 200, 32, 0.15);
+	color: #58c820;
+}
+
+.admin-status--draft {
+	background: rgba(255, 255, 255, 0.08);
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.admin-actions {
+	display: flex;
+	gap: var(--space-3);
+	align-items: center;
+}
+
+.admin-card {
+	display: block;
+	background: var(--color-black);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--radius-sm);
+	padding: var(--space-6);
+	text-decoration: none;
+}
+
+.admin-card-count {
+	font-size: var(--text-2xl);
+	font-family: var(--font-display);
+	color: var(--color-white);
+}
+
+.admin-card-label {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: var(--text-sm);
+	margin-top: 4px;
+}
+
+.admin-toolbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: var(--space-6);
+}

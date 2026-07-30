@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 import { getDb } from "@/db";
 import { books } from "@/db/schema";
 import { uploadMedia } from "@/lib/media";
+import { slugify } from "@/lib/slugify";
 
 export async function upsertBook(formData: FormData) {
 	const id = formData.get("id") as string | null;
@@ -20,7 +21,7 @@ export async function upsertBook(formData: FormData) {
 	const volumeNumber = formData.get("volumeNumber");
 
 	const values = {
-		slug: String(formData.get("slug")),
+		slug: slugify(String(formData.get("slug"))),
 		title: String(formData.get("title")),
 		volumeNumber: volumeNumber ? Number(volumeNumber) : null,
 		summary: String(formData.get("summary") ?? ""),

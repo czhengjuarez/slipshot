@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 import { getDb } from "@/db";
 import { characters } from "@/db/schema";
 import { uploadMedia } from "@/lib/media";
+import { slugify } from "@/lib/slugify";
 
 export async function upsertCharacter(formData: FormData) {
 	const id = formData.get("id") as string | null;
@@ -23,7 +24,7 @@ export async function upsertCharacter(formData: FormData) {
 	}
 
 	const values = {
-		slug: String(formData.get("slug")),
+		slug: slugify(String(formData.get("slug"))),
 		name: String(formData.get("name")),
 		accentColor: String(formData.get("accentColor")),
 		quote: String(formData.get("quote") ?? ""),

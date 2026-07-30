@@ -79,6 +79,9 @@ export const blogPosts = sqliteTable("blog_posts", {
 		.notNull()
 		.default("draft"),
 	publishedAt: text("published_at"),
+	// Explicit editorial pick for the /slip-log hero spot, rather than always
+	// defaulting to whichever post is newest.
+	featured: integer("featured", { mode: "boolean" }).notNull().default(false),
 	...timestamps,
 });
 

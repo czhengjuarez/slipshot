@@ -30,7 +30,7 @@ export default async function BlogListPage() {
 				<tbody>
 					{rows.map((post) => (
 						<tr key={post.id}>
-							<td>{post.title}</td>
+							<td>{post.title}{post.featured && " ★"}</td>
 							<td>{post.slug}</td>
 							<td>{post.category ?? "—"}</td>
 							<td>

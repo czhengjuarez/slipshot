@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 import { getDb } from "@/db";
 import { blogPosts } from "@/db/schema";
 import { uploadMedia } from "@/lib/media";
+import { slugify } from "@/lib/slugify";
 
 export async function upsertBlogPost(formData: FormData) {
 	const id = formData.get("id") as string | null;
@@ -20,13 +21,14 @@ export async function upsertBlogPost(formData: FormData) {
 	const status = formData.get("status") === "published" ? ("published" as const) : ("draft" as const);
 
 	const values = {
-		slug: String(formData.get("slug")),
+		slug: slugify(String(formData.get("slug"))),
 		title: String(formData.get("title")),
 		excerpt: String(formData.get("excerpt") ?? ""),
 		body: String(formData.get("body") ?? ""),
 		category: String(formData.get("category") ?? ""),
 		status,
 		publishedAt: status === "published" ? (String(formData.get("publishedAt") ?? "") || new Date().toISOString()) : null,
+		featured: formData.get("featured") === "on",
 		updatedAt: new Date().toISOString(),
 		...(coverImageKey ? { coverImageKey } : {}),
 	};

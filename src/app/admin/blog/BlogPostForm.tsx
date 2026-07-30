@@ -1,6 +1,8 @@
 import { upsertBlogPost } from "./actions";
 import { mediaUrl } from "@/lib/media";
 import { ImageUploadField } from "../ImageUploadField";
+import { MarkdownEditorField } from "../MarkdownEditorField";
+import { BLOG_CATEGORIES } from "@/lib/blogCategories";
 
 type BlogPost = {
 	id: number;
@@ -11,6 +13,8 @@ type BlogPost = {
 	coverImageKey: string | null;
 	category: string | null;
 	status: "draft" | "published";
+	publishedAt: string | null;
+	featured: boolean;
 };
 
 export function BlogPostForm({ post }: { post?: BlogPost }) {
@@ -38,7 +42,19 @@ export function BlogPostForm({ post }: { post?: BlogPost }) {
 				<label className="form-label" htmlFor="category">
 					Category
 				</label>
-				<input className="form-input" id="category" name="category" defaultValue={post?.category ?? ""} />
+				<select
+					className="form-input"
+					id="category"
+					name="category"
+					defaultValue={post?.category ?? BLOG_CATEGORIES[0]}
+					style={{ width: "auto" }}
+				>
+					{BLOG_CATEGORIES.map((category) => (
+						<option key={category} value={category}>
+							{category}
+						</option>
+					))}
+				</select>
 			</div>
 
 			<div className="form-group">
@@ -56,17 +72,8 @@ export function BlogPostForm({ post }: { post?: BlogPost }) {
 			</div>
 
 			<div className="form-group">
-				<label className="form-label" htmlFor="body">
-					Body (Markdown)
-				</label>
-				<textarea
-					className="form-input"
-					id="body"
-					name="body"
-					rows={14}
-					defaultValue={post?.body ?? ""}
-					style={{ resize: "vertical", fontFamily: "monospace" }}
-				/>
+				<label className="form-label">Body</label>
+				<MarkdownEditorField name="body" defaultValue={post?.body ?? ""} />
 			</div>
 
 			<div className="form-group">
@@ -90,6 +97,27 @@ export function BlogPostForm({ post }: { post?: BlogPost }) {
 					<option value="draft">Draft</option>
 					<option value="published">Published</option>
 				</select>
+			</div>
+
+			<div className="form-group">
+				<label className="form-label" htmlFor="publishedAt">
+					Publish date (used for sorting and the displayed date — leave blank to use today when publishing)
+				</label>
+				<input
+					className="form-input"
+					id="publishedAt"
+					name="publishedAt"
+					type="date"
+					defaultValue={post?.publishedAt?.slice(0, 10) ?? ""}
+					style={{ width: 200 }}
+				/>
+			</div>
+
+			<div className="form-group">
+				<label className="form-label" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+					<input type="checkbox" name="featured" defaultChecked={post?.featured ?? false} />
+					Featured on The Slip-Log
+				</label>
 			</div>
 
 			<div className="admin-actions" style={{ marginTop: "var(--space-6)" }}>

@@ -20,3 +20,17 @@ body {
 	color: var(--foreground);
 	font-family: var(--font-body);
 }
+
+/* Tailwind's preflight sets list-style: none on every <ul>/<ol> site-wide
+   (by design, e.g. for nav lists like .nav-links). Restore real bullets/
+   numbers specifically where Markdown content is rendered: the admin
+   editor's live preview (.wmde-markdown) and published post bodies
+   (.markdown-body, used in slip-log/[slug]). */
+.wmde-markdown ul,
+.markdown-body ul {
+	list-style: disc;
+}
+.wmde-markdown ol,
+.markdown-body ol {
+	list-style: decimal;
+}

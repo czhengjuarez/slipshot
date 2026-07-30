@@ -1,0 +1,10 @@
+/* Points Slipshot's --font-display / --font-body tokens at the fonts Next.js
+   is actually loading (next/font/local + next/font/google in layout.tsx),
+   instead of the raw family-name strings baked into the copied tokens.css.
+   Import this AFTER tokens.css so it wins the cascade. Keep tokens.css itself
+   untouched so it stays a clean, diffable copy of the design-system repo's
+   generated output. */
+:root {
+  --font-display: var(--font-postnobills), 'Postnobillscolombo', sans-serif;
+  --font-body: var(--font-montserrat), 'Montserrat', sans-serif;
+}

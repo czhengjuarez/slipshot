@@ -1,0 +1,76 @@
+/* GENERATED FILE — do not edit by hand. */
+/* Source: tokens.source.css (:root block). Run `npm run tokens:build` to regenerate. */
+/* Portable token file — @import or copy into any consuming app (e.g. the future Slipshot storefront). */
+
+:root {
+  /* color */
+  --color-red: #CC2020;
+  --color-yellow: #F5CC00;
+  --color-violet: #B516FF;
+
+  /* neutral */
+  --color-black: #000000;
+  --color-dark: #141414;
+  --color-slate: #1A1B1F;
+  --color-charcoal: #232323;
+  --color-white: #FFFFFF;
+  --color-off-white: #EEEEEE;
+  --color-light-gray: #DDDDDD;
+  --color-text-muted: #43464D;
+  --color-body-text: #333333;
+
+  /* characterColor */
+  --char-cythiria: #7B3DE8;
+  --char-benj: #4AC9B0;
+  --char-chelss: #F090B0;
+  --char-betel: #E8C840;
+  --char-judith: #E040A8;
+  --char-matere: #E05030;
+  --char-jeremiah: #D06820;
+  --char-natty: #503890;
+  --char-fredrick: #58C820;
+  --char-jillian: #505060;
+  --char-opal: #C8E020;
+  --char-rive: #6040C0;
+
+  /* typography */
+  --font-display: 'Postnobillscolombo', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 24px;
+  --text-xl: 32px;
+  --text-2xl: 44px;
+  --text-3xl: 60px;
+  --lh-display: 80px;
+  --lh-heading: 1.4;
+  --lh-body: 1.6;
+  --ls-nav: 1px;
+  --ls-cart: 2px;
+  --ls-btn: 2px;
+
+  /* spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* radius */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+
+  /* shadow */
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.5);
+  --shadow-glow-red: 0 0 20px rgba(204,32,32,0.4);
+  --shadow-glow-yellow: 0 0 20px rgba(245,204,0,0.4);
+  --shadow-glow-violet: 0 0 20px rgba(181,22,255,0.4);
+}

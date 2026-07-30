@@ -1,0 +1,539 @@
+/* Slipshot design system — component styles.
+   Extracted from slipshot-design-system.html so this stylesheet is a portable,
+   consumable artifact (not just a live reference page). Requires tokens.css
+   to be loaded first — every rule here references --color-*, --font-*, etc.
+
+   Source of truth for which components exist: components.json (same repo).
+   Keep both in sync when a component is added, changed, or removed. */
+
+/* ─── BUTTONS ────────────────────────────────────────────── */
+
+/* Primary CTA — Red, full-width on mobile */
+.btn-primary {
+  display: inline-block;
+  background: var(--color-red);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-btn);
+  padding: 14px 32px;
+  border: none;
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: #a81818;
+  box-shadow: var(--shadow-glow-red);
+}
+
+/* Ghost / Outline */
+.btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-btn);
+  padding: 14px 32px;
+  border: 1px solid var(--color-white);
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+/* White / Inverted (used on dark 404-style pages) */
+.btn-white {
+  display: inline-block;
+  background: var(--color-white);
+  color: #202020;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-btn);
+  padding: 16px 35px;
+  border: none;
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-white:hover { background: var(--color-off-white); }
+
+/* Violet Pill (nav active / character page CTA) */
+.btn-violet {
+  display: inline-block;
+  background: var(--color-violet);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-nav);
+  padding: 9px 20px;
+  border: none;
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-violet:hover {
+  background: #9a10d4;
+  box-shadow: var(--shadow-glow-violet);
+}
+
+/* Nav Active State */
+.btn-nav-active {
+  display: inline-block;
+  background: var(--color-violet);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-nav);
+  padding: 9px 20px;
+  border: none;
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ─── BADGE / TAG ────────────────────────────────────────── */
+.badge { display: inline-block; padding: 4px 12px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+.badge-red    { background: var(--color-red); color: var(--color-white); }
+.badge-yellow { background: var(--color-yellow); color: var(--color-black); }
+.badge-violet  { background: var(--color-violet); color: var(--color-white); }
+.badge-outline { background: transparent; color: var(--color-white); border: 1px solid rgba(255,255,255,0.3); }
+.badge-dark    { background: var(--color-charcoal); color: rgba(255,255,255,0.6); }
+
+.type-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+  background: rgba(245,204,0,0.12);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── NAVIGATION ─────────────────────────────────────────── */
+.nav-preview {
+  background: var(--color-black);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-white);
+  letter-spacing: 1px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-nav);
+  color: var(--color-off-white);
+  text-decoration: none;
+  padding: 9px 14px;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--color-white); }
+
+.nav-links a.active-nav {
+  background: var(--color-violet);
+  color: var(--color-white);
+}
+
+.nav-cart {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-cart);
+  color: var(--color-white);
+  text-decoration: none;
+  background: var(--color-slate);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─── HERO SECTION ───────────────────────────────────────── */
+.hero-preview {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--color-red);
+  clip-path: polygon(0 0, 100% 0, 65% 100%, 0% 100%);
+}
+
+.hero-bg-dark {
+  position: absolute;
+  inset: 0;
+  background: var(--color-dark);
+  clip-path: polygon(65% 0, 100% 0, 100% 100%, 40% 100%);
+}
+
+.hero-dot-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0,0,0,0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.4;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-signup {
+  position: absolute;
+  right: 40px;
+  bottom: 32px;
+  z-index: 2;
+  background: rgba(0,0,0,0.8);
+  padding: 20px 24px;
+  width: 280px;
+}
+
+.hero-signup-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 12px;
+}
+
+/* ─── FORM ELEMENTS ──────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  background: var(--color-white);
+  border: none;
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-body-text);
+  border-radius: var(--radius-none);
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.form-input::placeholder { color: rgba(0,0,0,0.35); }
+
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+
+/* ─── CHARACTER CARD ─────────────────────────────────────── */
+.char-card {
+  display: flex;
+  min-height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+
+.char-card-art {
+  width: 40%;
+  background: var(--char-fredrick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: rgba(0,0,0,0.2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  position: relative;
+}
+
+.char-card-art .dot-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.char-card-content {
+  flex: 1;
+  background: var(--color-dark);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.char-card-content .dot-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.char-card-content > * { position: relative; z-index: 1; }
+
+.char-quote {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.char-bio {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-white);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 480px;
+}
+
+.char-link {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.char-back-link {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+/* ─── CHARACTER GRID ─────────────────────────────────────── */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+
+.char-tile {
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.char-tile-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.char-tile-name {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.char-tile:hover .char-tile-bg { filter: brightness(1.1); }
+
+/* ─── BLOG CARDS ─────────────────────────────────────────── */
+.blog-featured {
+  background: var(--color-charcoal);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.blog-featured-bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.blog-featured-img {
+  width: 45%;
+  min-height: 220px;
+  background: linear-gradient(135deg, var(--color-red), #2a0a40);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-featured-content {
+  padding: 32px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blog-title-display {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.blog-excerpt {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.blog-date {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.blog-card {
+  background: var(--color-charcoal);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.blog-card:hover { transform: translateY(-2px); }
+
+.blog-card-img {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #1a0a2e, var(--color-violet));
+}
+
+.blog-card-body { padding: 16px; }
+
+/* ─── EMAIL SIGNUP ────────────────────────────────────────── */
+.email-signup-dark {
+  background: var(--color-slate);
+  padding: 32px;
+  max-width: 340px;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.footer-preview {
+  background: var(--color-slate);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-white);
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.footer-nav-col { }
+
+.footer-link {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.15s;
+}
+
+.footer-link:hover { color: var(--color-white); }
+
+/* ─── 404 PAGE ────────────────────────────────────────────── */
+.error-preview {
+  background: var(--color-charcoal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 40px;
+  text-align: center;
+}
+
+.error-char {
+  width: 80px;
+  height: 110px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: rgba(255,255,255,0.15);
+}

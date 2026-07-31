@@ -3,8 +3,7 @@ import { mediaUrl } from "@/lib/media";
 const HERO_KEY = "vibe/1c1a5460-a021-4739-838e-a4dcfc4cacef.png";
 const CONFRONTATION_KEY = "vibe/eef9b6aa-cfe5-4b2a-af2f-6c4d72b19267.png";
 const MATERE_KEY = "vibe/c385cd70-809d-411f-a37f-a172c4b2de54.png";
-const SPINE_COVERS_KEY = "vibe/876331e6-b493-43bd-80f2-996e8b91207d.png";
-const FULL_COVERS_KEY = "vibe/bce11aae-97af-4ef0-b114-bcb2699c6102.png";
+const FULL_COVERS_KEY = "vibe/9276753a-86bb-4a9d-97a7-dea5f0d90563.png";
 
 const CLASSIFICATIONS = [
 	{
@@ -41,7 +40,6 @@ export default function TheVibePage() {
 	const heroUrl = mediaUrl(HERO_KEY);
 	const confrontationUrl = mediaUrl(CONFRONTATION_KEY);
 	const matereUrl = mediaUrl(MATERE_KEY);
-	const spineCoversUrl = mediaUrl(SPINE_COVERS_KEY);
 	const fullCoversUrl = mediaUrl(FULL_COVERS_KEY);
 
 	return (
@@ -178,10 +176,10 @@ export default function TheVibePage() {
 				>
 					Explore the Series
 				</h2>
-				{(spineCoversUrl || fullCoversUrl) && (
+				{fullCoversUrl && (
 					// eslint-disable-next-line @next/next/no-img-element
 					<img
-						src={fullCoversUrl ?? spineCoversUrl ?? undefined}
+						src={fullCoversUrl}
 						alt="Slipshot Vol 1.0, 2.0, and 3.0 covers"
 						style={{ maxWidth: 640, width: "100%", margin: "0 auto var(--space-8)", display: "block" }}
 					/>

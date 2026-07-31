@@ -75,13 +75,13 @@ function ArtTile({ piece }: { piece: ArtPiece }) {
 			<img
 				src={imageUrl ?? undefined}
 				alt={piece.title}
-				style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+				style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}
 			/>
 			<div
 				style={{
 					position: "absolute",
 					inset: 0,
-					background: "linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 55%)",
+					background: "linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 40%, transparent 75%)",
 					opacity: hovered ? 1 : 0,
 					transition: "opacity 0.15s",
 					display: "flex",
@@ -90,12 +90,25 @@ function ArtTile({ piece }: { piece: ArtPiece }) {
 					padding: "var(--space-3)",
 				}}
 			>
-				<div style={{ color: "#fff", fontSize: "var(--text-sm)" }}>{piece.title}</div>
+				<div style={{ color: "#fff", fontSize: "var(--text-sm)", fontWeight: 600, textShadow: "0 1px 3px rgba(0,0,0,0.8)" }}>
+					{piece.title}
+				</div>
 				{piece.artistCredit && (
-					<div style={{ color: "rgba(255,255,255,0.6)", fontSize: 12 }}>by {piece.artistCredit}</div>
+					<div style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, textShadow: "0 1px 3px rgba(0,0,0,0.8)" }}>
+						by {piece.artistCredit}
+					</div>
 				)}
 				{piece.caption && (
-					<div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginTop: 2 }}>{piece.caption}</div>
+					<div
+						style={{
+							color: "rgba(255,255,255,0.8)",
+							fontSize: 12,
+							marginTop: 2,
+							textShadow: "0 1px 3px rgba(0,0,0,0.8)",
+						}}
+					>
+						{piece.caption}
+					</div>
 				)}
 			</div>
 		</div>

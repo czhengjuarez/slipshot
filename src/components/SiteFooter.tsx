@@ -28,8 +28,11 @@ export function SiteFooter() {
 				<a className="footer-link" href="/contact-us">
 					Contact Us
 				</a>
-				<a className="footer-link" href="https://slipshot.fandom.com/" target="_blank" rel="noopener noreferrer">
-					Fandom Wiki
+				<a className="footer-link" href="https://www.tiktok.com/@slip.shot" target="_blank" rel="noopener noreferrer">
+					TikTok
+				</a>
+				<a className="footer-link" href="https://www.instagram.com/slip.shot/" target="_blank" rel="noopener noreferrer">
+					Instagram
 				</a>
 			</div>
 		</footer>

@@ -639,8 +639,20 @@
 
 .vibe-faction-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 4px;
+}
+
+@media (max-width: 900px) {
+  .vibe-faction-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .vibe-faction-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .vibe-faction-card {

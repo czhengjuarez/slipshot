@@ -126,18 +126,18 @@ export default function TheVibePage() {
 				>
 					Four Classifications
 				</h2>
-				<p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, marginBottom: "var(--space-8)", lineHeight: 1.7 }}>
+				<p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, lineHeight: 1.7 }}>
 					Every storyline in Slipshot gets sorted into one of these. Most characters live in more than one.
 				</p>
-				<div className="vibe-faction-grid">
-					{CLASSIFICATIONS.map((c) => (
-						<div key={c.name} className="vibe-faction-card" style={{ background: c.color }}>
-							<div className="vibe-faction-name">{c.name}</div>
-							<div className="vibe-faction-text">{c.text}</div>
-						</div>
-					))}
-				</div>
 			</section>
+			<div className="vibe-faction-grid">
+				{CLASSIFICATIONS.map((c) => (
+					<div key={c.name} className="vibe-faction-card" style={{ background: c.color }}>
+						<div className="vibe-faction-name">{c.name}</div>
+						<div className="vibe-faction-text">{c.text}</div>
+					</div>
+				))}
+			</div>
 
 			<div>
 				{CLASSIFICATIONS.map((c) => {

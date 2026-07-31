@@ -68,45 +68,27 @@ export default function TheVibePage() {
 				</div>
 			</section>
 
-			<section style={{ padding: "var(--space-16) var(--space-8) var(--space-8)" }}>
+			<section style={{ background: "var(--color-charcoal)", padding: "var(--space-16) var(--space-8)" }}>
 				<h2
 					style={{
 						fontFamily: "var(--font-display)",
 						fontSize: "var(--text-xl)",
 						textTransform: "uppercase",
 						color: "#fff",
-						marginBottom: "var(--space-3)",
+						marginBottom: "var(--space-8)",
 					}}
 				>
-					Four Classifications
+					In Their Own Words
 				</h2>
-				<p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, lineHeight: 1.7 }}>
-					Every storyline in Slipshot gets sorted into one of these. Most characters live in more than one.
-				</p>
-			</section>
-
-			{CLASSIFICATIONS.map((c) => {
-				const dividerUrl = mediaUrl(c.dividerKey);
-				return (
-					<section key={c.name} style={{ padding: "0 0 var(--space-4)" }}>
-						{dividerUrl && (
-							// eslint-disable-next-line @next/next/no-img-element
-							<img
-								src={dividerUrl}
-								alt={`Classification: ${c.name}`}
-								style={{ width: "100%", display: "block" }}
-							/>
-						)}
-						<div
-							style={{
-								padding: "var(--space-8)",
-								borderLeft: `3px solid ${c.color}`,
-								margin: "var(--space-6) var(--space-8) 0",
-							}}
-						>
-							<p style={{ color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "var(--space-4)" }}>
-								{c.text}
-							</p>
+				<div
+					style={{
+						display: "grid",
+						gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+						gap: "var(--space-6)",
+					}}
+				>
+					{CLASSIFICATIONS.map((c) => (
+						<div key={c.name} style={{ borderLeft: `3px solid ${c.color}`, paddingLeft: "var(--space-4)" }}>
 							<p
 								style={{
 									color: "rgba(255,255,255,0.85)",
@@ -128,9 +110,50 @@ export default function TheVibePage() {
 								{c.attribution}
 							</p>
 						</div>
-					</section>
-				);
-			})}
+					))}
+				</div>
+			</section>
+
+			<section style={{ padding: "var(--space-16) var(--space-8) var(--space-8)" }}>
+				<h2
+					style={{
+						fontFamily: "var(--font-display)",
+						fontSize: "var(--text-xl)",
+						textTransform: "uppercase",
+						color: "#fff",
+						marginBottom: "var(--space-3)",
+					}}
+				>
+					Four Classifications
+				</h2>
+				<p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, marginBottom: "var(--space-8)", lineHeight: 1.7 }}>
+					Every storyline in Slipshot gets sorted into one of these. Most characters live in more than one.
+				</p>
+				<div className="vibe-faction-grid">
+					{CLASSIFICATIONS.map((c) => (
+						<div key={c.name} className="vibe-faction-card" style={{ background: c.color }}>
+							<div className="vibe-faction-name">{c.name}</div>
+							<div className="vibe-faction-text">{c.text}</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<div>
+				{CLASSIFICATIONS.map((c) => {
+					const dividerUrl = mediaUrl(c.dividerKey);
+					if (!dividerUrl) return null;
+					return (
+						// eslint-disable-next-line @next/next/no-img-element
+						<img
+							key={c.name}
+							src={dividerUrl}
+							alt={`Classification: ${c.name}`}
+							style={{ width: "100%", display: "block" }}
+						/>
+					);
+				})}
+			</div>
 
 			<section style={{ padding: "var(--space-16) var(--space-8)", textAlign: "center" }}>
 				<h2

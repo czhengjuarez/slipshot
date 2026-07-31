@@ -33,7 +33,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
 					display: "flex",
 					alignItems: "center",
 					background: heroUrl
-						? `linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%), url(${heroUrl}) center/cover`
+						? `linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%), url(${heroUrl}) top/cover`
 						: character.accentColor,
 				}}
 			>

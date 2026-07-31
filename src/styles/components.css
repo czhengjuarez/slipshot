@@ -537,3 +537,77 @@
   font-size: 36px;
   color: rgba(255,255,255,0.15);
 }
+
+/* ─── HOME: STORY BANNER ─────────────────────────────────── */
+.story-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.story-banner-half {
+  position: relative;
+  padding: var(--space-12) var(--space-8);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.story-banner-half::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: top;
+  opacity: 0.22;
+}
+
+.story-banner-left { background: var(--color-slate); }
+.story-banner-right { background: var(--color-dark); }
+
+.story-banner-content { position: relative; z-index: 1; max-width: 420px; }
+
+.story-banner-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+}
+
+.story-banner-text {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: var(--space-5);
+}
+
+/* ─── HOME: BOOK STACK ────────────────────────────────────── */
+.book-stack {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.book-stack-item {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.book-stack-cover {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+
+.book-stack-label {
+  margin-top: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}

@@ -54,17 +54,31 @@ export default async function Home() {
 	return (
 		<div>
 			<section className="hero-preview">
-				<div className="hero-bg" />
-				<div className="hero-bg-dark" />
+				<video
+					className="hero-video"
+					autoPlay
+					loop
+					muted
+					playsInline
+					poster={mediaUrl("hero/649415d5-0405-49a5-86bd-0099c4560391.jpg") ?? undefined}
+				>
+					{mediaUrl("hero/4e4d9923-2358-4a5c-9e35-77be7aad89d1.mp4") && (
+						<source src={mediaUrl("hero/4e4d9923-2358-4a5c-9e35-77be7aad89d1.mp4")!} type="video/mp4" />
+					)}
+					{mediaUrl("hero/f7f6934a-58f3-4309-9a60-6a3a746e1cbe.webm") && (
+						<source src={mediaUrl("hero/f7f6934a-58f3-4309-9a60-6a3a746e1cbe.webm")!} type="video/webm" />
+					)}
+				</video>
+				<div className="hero-video-scrim" />
 				<div className="hero-dot-overlay" />
 				<div className="hero-content">
 					<h1
 						style={{
 							fontFamily: "var(--font-display)",
-							fontSize: "var(--text-2xl)",
+							fontSize: "var(--text-3xl)",
 							textTransform: "uppercase",
 							color: "#fff",
-							lineHeight: 1.2,
+							lineHeight: 1.05,
 							marginBottom: "var(--space-4)",
 						}}
 					>

@@ -193,10 +193,19 @@
 /* ─── HERO SECTION ───────────────────────────────────────── */
 .hero-preview {
   position: relative;
-  min-height: 280px;
+  min-height: 520px;
   overflow: hidden;
   display: flex;
   align-items: stretch;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .hero-bg {
@@ -213,12 +222,20 @@
   clip-path: polygon(65% 0, 100% 0, 100% 100%, 40% 100%);
 }
 
+.hero-video-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.05) 100%);
+  z-index: 1;
+}
+
 .hero-dot-overlay {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(rgba(0,0,0,0.3) 1px, transparent 1px);
   background-size: 20px 20px;
-  opacity: 0.4;
+  opacity: 0.25;
+  z-index: 1;
 }
 
 .hero-content {
@@ -733,7 +750,7 @@
 /* ─── HOME: CHARACTER STORIES ─────────────────────────────── */
 .char-story-row {
   position: relative;
-  min-height: 420px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   background-size: cover;
@@ -755,12 +772,18 @@
   position: relative;
   z-index: 1;
   max-width: 480px;
-  padding: var(--space-10) var(--space-8);
+  padding: var(--space-10) var(--space-16);
 }
 
 .char-story-row.reverse .char-story-text {
   margin-left: auto;
   text-align: right;
+}
+
+@media (max-width: 700px) {
+  .char-story-text {
+    padding: var(--space-8);
+  }
 }
 
 .char-story-heading {

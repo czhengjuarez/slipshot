@@ -7,7 +7,7 @@ const CLASSIFICATIONS = [
 	{
 		name: "Violence",
 		color: "#CC2020",
-		dividerKey: "vibe/b52afcc8-8731-4563-b695-9782a381c8d0.png",
+		dividerKey: "vibe/f96d0e05-05bb-4a8d-9bc5-e43993c2e19f.jpg",
 		text: "What the Mechanics are ordered to do to the Vars, and what happens when one of them stops taking orders. This is the classification where the Bestiars are born.",
 		quote: "I never wanted it to be this way. I never wanted to bring the power of the Vérkatrae down on the Vars and the Varlings. But what choice did I have? This was my job. I knew nothing else.",
 		attribution: "Opal Fremmitty",
@@ -15,7 +15,7 @@ const CLASSIFICATIONS = [
 	{
 		name: "Peace",
 		color: "#58C820",
-		dividerKey: "vibe/e6f782ae-3804-44cc-8110-7f671240fc03.png",
+		dividerKey: "vibe/24e2128e-4d29-4661-9f23-fc84cb8267f8.jpg",
 		text: "The quiet before it all breaks — a found family assembling itself on Earth without knowing what any of them really are yet, or what's coming for them.",
 		quote: "I never saw those machines, the Vérkatrae, as they were called. But Fredrick saw them. I didn't understand how, or why, or what their purpose was. It was my goal to find out, to understand Opal, and to save our world.",
 		attribution: "Jillian Crenshaw",
@@ -23,7 +23,7 @@ const CLASSIFICATIONS = [
 	{
 		name: "Manipulation",
 		color: "#B516FF",
-		dividerKey: "vibe/20304b23-249e-4646-bb9a-d7352aef361f.png",
+		dividerKey: "vibe/35e29e13-9431-486f-b19d-eba8b1f4d2db.jpg",
 		text: "Every character playing an angle — Engineers scheming against their own Council, Slaves working the system that owns them, nobody saying what they actually want out loud.",
 		quote: "I was not going to let Griddish have its way with the Vars. In terms of my past, that cannot define who I am. I will no longer accept the decisions of the Council of Engineer Class Citizens.",
 		attribution: "Matere Songgaard",
@@ -31,7 +31,7 @@ const CLASSIFICATIONS = [
 	{
 		name: "Pathos",
 		color: "#4AC9B0",
-		dividerKey: "vibe/4617b1b5-af61-4f42-8cf5-5d527541a068.png",
+		dividerKey: "vibe/c8add3b8-17e1-4d49-b2cb-23431fc9c482.jpg",
 		text: "The cost nobody sends an invoice for — the people left behind, the ones who never fit anywhere, the grief that outlasts the fight that caused it.",
 		quote: "Cythiria loved me. Yet, was I able to return that love? When she disappeared one day, I swore I would find her at any cost.",
 		attribution: "Chelss Brimwater",

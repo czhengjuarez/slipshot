@@ -729,3 +729,42 @@
   font-size: var(--text-sm);
   line-height: 1.5;
 }
+
+/* ─── HOME: CHARACTER STORIES ─────────────────────────────── */
+.char-story-row {
+  display: flex;
+  min-height: 360px;
+  flex-wrap: wrap;
+}
+
+.char-story-row.reverse { flex-direction: row-reverse; }
+
+.char-story-img {
+  flex: 1 1 420px;
+  background-size: cover;
+  background-position: center top;
+}
+
+.char-story-text {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-10) var(--space-8);
+  background: var(--color-dark);
+}
+
+.char-story-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--space-4);
+}
+
+.char-story-body {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: var(--space-5);
+}

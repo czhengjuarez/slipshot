@@ -175,6 +175,63 @@ export default async function Home() {
 				</div>
 			</section>
 
+			<section>
+				{[
+					{
+						slug: "cythiria-crenshaw",
+						name: "Cythiria Crenshaw",
+						heading: "I never asked to be here...",
+						body: "Every day on Farth is more difficult. I can't seem to rid myself of the grinding sounds in my own head. If it weren't for Rive Amber, I'm not sure what I would do. My childhood memories are shattered. But Rive told me she would help me to regain what I've lost. But what have I lost?",
+						imageKey: "home/655b9806-90ab-48ad-a2ab-cc9540bc033a.jpg",
+					},
+					{
+						slug: "fredrick-munchen",
+						name: "Fredrick Munchen",
+						heading: "It was those machines...",
+						body: "The ones lurking in the shadows who started it all. It was when I first saw them that I knew something was desperately wrong. And also, Opal. She never was able to elucidate the truth about those machines. Only that, life was too short to worry about such things.",
+						imageKey: "home/5b0993a2-0c5b-4cc7-8ed7-bac2e7aabf7b.jpg",
+					},
+					{
+						slug: "blinky",
+						name: "Blinky",
+						heading: "The lights had meaning...",
+						body: "It meant, there was something about Cythiria, something that united her with the Vérkatrae and Griddish and all the Slaves. It was only a matter of time until she came to realize that.",
+						imageKey: "home/ee1798ee-7b91-4883-b440-bf13aea61d58.jpg",
+					},
+					{
+						slug: "matere-songgaard",
+						name: "Matere Songgaard",
+						heading: "I couldn't let it happen...",
+						body: "I was not about to let the Engineers get away with their plans. Even though I was one of them, I decided to spend my life thwarting their corrupt and lazy interests. I would not let them have their way, not with the Vars or the Varlings.",
+						imageKey: "home/3a1324c5-2078-4b4f-ae0f-b146e2eaca13.jpg",
+					},
+					{
+						slug: "opal-fremmitty",
+						name: "Opal Fremmitty",
+						heading: "It was too much to ask...",
+						body: "I was tired, worn down by my work as a Mechanic Class Slave, stationed on the Vars until the final deed was done. At some point, it was just too much. I could no longer stomach the decisions of the Engineers and their Commission. Something had to change.",
+						imageKey: "home/606d484b-6fa6-400f-93b6-3209361dbd11.jpg",
+					},
+				].map((story, i) => {
+					const imgUrl = mediaUrl(story.imageKey);
+					return (
+						<div key={story.slug} className={`char-story-row${i % 2 === 1 ? " reverse" : ""}`}>
+							<div
+								className="char-story-img"
+								style={imgUrl ? { backgroundImage: `url(${imgUrl})` } : undefined}
+							/>
+							<div className="char-story-text">
+								<h2 className="char-story-heading">{story.heading}</h2>
+								<p className="char-story-body">{story.body}</p>
+								<a className="char-link" href={`/characters/${story.slug}`}>
+									{story.name} &gt;&gt;
+								</a>
+							</div>
+						</div>
+					);
+				})}
+			</section>
+
 			{allBooks.length > 0 && (
 				<section style={{ padding: "var(--space-16) var(--space-8)", background: "var(--color-charcoal)" }}>
 					<h2

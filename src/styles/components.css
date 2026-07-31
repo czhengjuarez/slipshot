@@ -732,26 +732,35 @@
 
 /* ─── HOME: CHARACTER STORIES ─────────────────────────────── */
 .char-story-row {
+  position: relative;
+  min-height: 420px;
   display: flex;
-  min-height: 360px;
-  flex-wrap: wrap;
-}
-
-.char-story-row.reverse { flex-direction: row-reverse; }
-
-.char-story-img {
-  flex: 1 1 420px;
+  align-items: center;
   background-size: cover;
   background-position: center top;
 }
 
+.char-story-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 100%);
+}
+
+.char-story-row.reverse::before {
+  background: linear-gradient(270deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 100%);
+}
+
 .char-story-text {
-  flex: 1 1 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
   padding: var(--space-10) var(--space-8);
-  background: var(--color-dark);
+}
+
+.char-story-row.reverse .char-story-text {
+  margin-left: auto;
+  text-align: right;
 }
 
 .char-story-heading {
@@ -763,8 +772,7 @@
 }
 
 .char-story-body {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85);
   line-height: 1.7;
-  max-width: 480px;
   margin-bottom: var(--space-5);
 }

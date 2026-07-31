@@ -11,6 +11,9 @@ export function SiteNav() {
 					<a href="/characters">Characters</a>
 				</li>
 				<li>
+					<a href="/the-vibe">The Vibe</a>
+				</li>
+				<li>
 					<a href="/the-novel">Get the Novels</a>
 				</li>
 				<li>

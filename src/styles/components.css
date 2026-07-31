@@ -611,3 +611,109 @@
   text-transform: uppercase;
   color: rgba(255,255,255,0.7);
 }
+
+/* ─── THE VIBE ────────────────────────────────────────────── */
+.vibe-hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: top;
+  overflow: hidden;
+}
+
+.vibe-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.15) 100%);
+}
+
+.vibe-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-12) var(--space-8);
+  max-width: 720px;
+}
+
+.vibe-faction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 4px;
+}
+
+.vibe-faction-card {
+  padding: var(--space-6);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.vibe-faction-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px);
+  background-size: 14px 14px;
+  opacity: 0.15;
+}
+
+.vibe-faction-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--space-2);
+  position: relative;
+  z-index: 1;
+}
+
+.vibe-faction-text {
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+  font-size: var(--text-sm);
+  position: relative;
+  z-index: 1;
+}
+
+.vibe-lineup-strip {
+  display: flex;
+  overflow-x: auto;
+  gap: 4px;
+}
+
+.vibe-lineup-strip img {
+  height: 320px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: top;
+}
+
+.vibe-arc-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-4);
+}
+
+.vibe-arc-step {
+  border-left: 3px solid var(--color-violet);
+  padding-left: var(--space-4);
+}
+
+.vibe-arc-step-label {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--space-1);
+}
+
+.vibe-arc-step-text {
+  color: rgba(255,255,255,0.65);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}

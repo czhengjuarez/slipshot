@@ -559,7 +559,7 @@ export default function UnlockPage() {
 				// NODE ACCESS: you have been authorized //
 			</h1>
 
-			<div style={{ display: "flex", gap: "var(--space-8)", flexWrap: "wrap" }}>
+			<div style={{ display: "flex", gap: "var(--space-8)", flexWrap: "wrap", alignItems: "stretch" }}>
 				<div style={{ flex: "1 1 500px" }}>
 					<div id="tenddrome-terminal">
 						<div id="boot-sequence">
@@ -611,12 +611,12 @@ export default function UnlockPage() {
 				</div>
 
 				{coverUrl && (
-					<div style={{ flex: "0 1 300px" }}>
+					<div style={{ flex: "1 1 300px", display: "flex" }}>
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src={coverUrl}
 							alt="Cover of novel depicting character walking forward"
-							style={{ width: "100%", display: "block" }}
+							style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
 						/>
 					</div>
 				)}

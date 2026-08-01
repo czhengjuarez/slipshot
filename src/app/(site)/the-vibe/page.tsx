@@ -1,4 +1,5 @@
 import { mediaUrl } from "@/lib/media";
+import { RevealSlide } from "@/components/RevealSlide";
 
 const HERO_KEY = "vibe/1c1a5460-a021-4739-838e-a4dcfc4cacef.png";
 const FULL_COVERS_KEY = "vibe/9276753a-86bb-4a9d-97a7-dea5f0d90563.png";
@@ -140,17 +141,18 @@ export default function TheVibePage() {
 			</div>
 
 			<div>
-				{CLASSIFICATIONS.map((c) => {
+				{CLASSIFICATIONS.map((c, i) => {
 					const dividerUrl = mediaUrl(c.dividerKey);
 					if (!dividerUrl) return null;
 					return (
-						// eslint-disable-next-line @next/next/no-img-element
-						<img
-							key={c.name}
-							src={dividerUrl}
-							alt={`Classification: ${c.name}`}
-							style={{ width: "100%", display: "block" }}
-						/>
+						<RevealSlide key={c.name} direction={i % 2 === 0 ? "left" : "right"}>
+							{/* eslint-disable-next-line @next/next/no-img-element */}
+							<img
+								src={dividerUrl}
+								alt={`Classification: ${c.name}`}
+								style={{ width: "100%", display: "block" }}
+							/>
+						</RevealSlide>
 					);
 				})}
 			</div>
@@ -167,14 +169,35 @@ export default function TheVibePage() {
 				>
 					Explore the Series
 				</h2>
-				{fullCoversUrl && (
-					// eslint-disable-next-line @next/next/no-img-element
-					<img
-						src={fullCoversUrl}
-						alt="Slipshot Vol 1.0, 2.0, and 3.0 covers"
-						style={{ maxWidth: 640, width: "100%", margin: "0 auto var(--space-8)", display: "block" }}
-					/>
-				)}
+				<div
+					style={{
+						display: "flex",
+						gap: "var(--space-6)",
+						justifyContent: "center",
+						alignItems: "center",
+						flexWrap: "wrap",
+						marginBottom: "var(--space-8)",
+					}}
+				>
+					{mediaUrl("home/541351a3-92f1-4282-aedd-221f142fca59.png") && (
+						// eslint-disable-next-line @next/next/no-img-element
+						<img
+							src={mediaUrl("home/541351a3-92f1-4282-aedd-221f142fca59.png")!}
+							alt="Codex 1.0: Slipshot box set"
+							style={{ maxWidth: 320, width: "100%", display: "block" }}
+						/>
+					)}
+					{fullCoversUrl && (
+						<div style={{ background: "var(--color-dark)", padding: "var(--space-8)", maxWidth: 320, width: "100%" }}>
+							{/* eslint-disable-next-line @next/next/no-img-element */}
+							<img
+								src={fullCoversUrl}
+								alt="Slipshot Vol 1.0, 2.0, and 3.0 covers"
+								style={{ width: "100%", display: "block" }}
+							/>
+						</div>
+					)}
+				</div>
 				<div style={{ display: "flex", gap: "var(--space-4)", justifyContent: "center" }}>
 					<a className="btn-primary" href="/characters">
 						Meet the Cast

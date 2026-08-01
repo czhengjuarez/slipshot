@@ -49,8 +49,6 @@ export default async function Home() {
 		.where(eq(characters.slug, "fredrick-munchen"))
 		.limit(1);
 
-	const featuredHeroUrl = mediaUrl(featuredCharacter?.heroImageKey ?? featuredCharacter?.thumbnailImageKey);
-
 	return (
 		<div>
 			<section className="hero-preview">
@@ -220,45 +218,66 @@ export default async function Home() {
 					>
 						Get the Novels
 					</h2>
-					<div style={{ display: "flex", gap: "var(--space-10)", flexWrap: "wrap", alignItems: "flex-start" }}>
-						<div style={{ flex: "1 1 400px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7 }}>
-							<p style={{ marginBottom: "var(--space-4)" }}>
-								Welcome to a world where ancient secrets hold the key to Earth&rsquo;s future. The Slipshot
-								Series delivers thrills, unforgettable characters, and a mystery that deepens with every page.
+					<p
+						style={{
+							color: "rgba(255,255,255,0.75)",
+							lineHeight: 1.7,
+							maxWidth: 900,
+							marginBottom: "var(--space-10)",
+						}}
+					>
+						Welcome to a world where ancient secrets hold the key to Earth&rsquo;s future. The Slipshot Series
+						delivers thrills, unforgettable characters, and a mystery that deepens with every page.
+					</p>
+					<div className="novel-columns">
+						{[
+							{
+								text: "In Vol. 1.0, follow Frederick and Opal as they unravel the hidden ties between our world and the otherworldly Griddish Realm, facing strange machines, sudden black holes, and unexpected battles.",
+							},
+							{
+								text: "In Vol. 2.0, step into the life of Cythiria—an angsty yet determined teenager—who must piece together her fractured past while facing a destiny that could change everything.",
+							},
+							{
+								text: "In Vol 3.0, a new rival has entered the scene—Mora Thrembroke, fierce, relentless, and burning with a grudge. As Cythiria reels from Blinky's cryptic warning, Mora begins her pursuit—and she won't stop until the past is rewritten in blood.",
+							},
+						].map((vol, i) => {
+							const book = allBooks[i];
+							if (!book) return null;
+							const coverUrl = mediaUrl(book.coverImageKey);
+							return (
+								<a key={book.id} href="/the-novel" style={{ display: "block" }}>
+									{coverUrl && (
+										// eslint-disable-next-line @next/next/no-img-element
+										<img src={coverUrl} alt={book.title} className="novel-column-cover" />
+									)}
+									<div className="novel-column-title">{book.title}</div>
+									<p className="novel-column-text">{vol.text}</p>
+								</a>
+							);
+						})}
+
+						<a href="/the-vibe" style={{ display: "block" }}>
+							{/* eslint-disable-next-line @next/next/no-img-element */}
+							<img
+								src={mediaUrl("vibe/c8add3b8-17e1-4d49-b2cb-23431fc9c482.jpg") ?? undefined}
+								alt="The Codex"
+								className="novel-column-cover"
+							/>
+							<div className="novel-column-title">The Codex</div>
+							<p className="novel-column-text">
+								All the art, none of the spoilers — a fast tour through Violence, Peace, Manipulation, and
+								Pathos, the four classifications that hold the whole series together.
 							</p>
-							<p style={{ marginBottom: "var(--space-4)" }}>
-								In Vol. 1.0, follow Frederick and Opal as they unravel the hidden ties between our world and
-								the otherworldly Griddish Realm, facing strange machines, sudden black holes, and unexpected
-								battles.
-							</p>
-							<p style={{ marginBottom: "var(--space-4)" }}>
-								In Vol. 2.0, step into the life of Cythiria—an angsty yet determined teenager—who must piece
-								together her fractured past while facing a destiny that could change everything.
-							</p>
-							<p style={{ marginBottom: "var(--space-6)" }}>
-								In Vol 3.0, a new rival has entered the scene—Mora Thrembroke, fierce, relentless, and burning
-								with a grudge. As Cythiria reels from Blinky&rsquo;s cryptic warning, Mora begins her
-								pursuit—and she won&rsquo;t stop until the past is rewritten in blood.
-							</p>
-							<a href="/the-novel" className="char-link">
-								See all volumes →
-							</a>
-						</div>
-						<div className="book-stack" style={{ flex: "1 1 320px" }}>
-							{allBooks.map((book) => {
-								const coverUrl = mediaUrl(book.coverImageKey);
-								return (
-									<a key={book.id} href="/the-novel" className="book-stack-item">
-										{coverUrl && (
-											// eslint-disable-next-line @next/next/no-img-element
-											<img src={coverUrl} alt={book.title} className="book-stack-cover" />
-										)}
-										<p className="book-stack-label">{book.title}</p>
-									</a>
-								);
-							})}
-						</div>
+						</a>
 					</div>
+
+					<a
+						href="/the-novel"
+						className="char-link"
+						style={{ display: "inline-block", marginTop: "var(--space-8)" }}
+					>
+						See all volumes →
+					</a>
 				</section>
 			)}
 

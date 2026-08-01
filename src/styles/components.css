@@ -629,6 +629,44 @@
   color: rgba(255,255,255,0.7);
 }
 
+.novel-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .novel-columns { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .novel-columns { grid-template-columns: 1fr; }
+}
+
+.novel-column-cover {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  margin-bottom: var(--space-4);
+}
+
+.novel-column-title {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--space-2);
+}
+
+.novel-column-text {
+  color: rgba(255,255,255,0.7);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
 /* ─── THE VIBE ────────────────────────────────────────────── */
 .vibe-hero {
   position: relative;

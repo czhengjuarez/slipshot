@@ -257,12 +257,27 @@ export default async function Home() {
 						})}
 
 						<a href="/the-vibe" style={{ display: "block" }}>
-							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img
-								src={mediaUrl("vibe/c8add3b8-17e1-4d49-b2cb-23431fc9c482.jpg") ?? undefined}
-								alt="The Codex"
+							<video
 								className="novel-column-cover"
-							/>
+								autoPlay
+								loop
+								muted
+								playsInline
+								poster={mediaUrl("codex/c2cb1355-88c8-4cc4-8ebf-2335b24933b5.jpg") ?? undefined}
+							>
+								{mediaUrl("codex/d1ed81a2-4a89-42ff-b6dd-87dd665a33d6.mp4") && (
+									<source
+										src={mediaUrl("codex/d1ed81a2-4a89-42ff-b6dd-87dd665a33d6.mp4")!}
+										type="video/mp4"
+									/>
+								)}
+								{mediaUrl("codex/aa9886f8-ac13-4531-99b4-6b1161e95e4f.webm") && (
+									<source
+										src={mediaUrl("codex/aa9886f8-ac13-4531-99b4-6b1161e95e4f.webm")!}
+										type="video/webm"
+									/>
+								)}
+							</video>
 							<div className="novel-column-title">The Codex</div>
 							<p className="novel-column-text">
 								All the art, none of the spoilers — a fast tour through Violence, Peace, Manipulation, and

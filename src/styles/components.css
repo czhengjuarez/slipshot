@@ -416,6 +416,33 @@
 
 .char-tile:hover .char-tile-bg { filter: brightness(1.1); }
 
+/* ─── CHARACTER CAROUSEL (home) ─────────────────────────────── */
+.char-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.char-carousel-track {
+  display: flex;
+  width: max-content;
+  animation: char-carousel-scroll 50s linear infinite;
+}
+
+.char-carousel .char-tile {
+  width: 180px;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+@keyframes char-carousel-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char-carousel-track { animation: none; }
+}
+
 /* ─── BLOG CARDS ─────────────────────────────────────────── */
 .blog-featured {
   background: var(--color-charcoal);

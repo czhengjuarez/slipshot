@@ -1,4 +1,4 @@
-import { desc, eq, ne, and } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { getDb } from "@/db";
 import { books, characters, blogPosts } from "@/db/schema";
 import { mediaUrl } from "@/lib/media";
@@ -15,19 +15,11 @@ export default async function Home() {
 		.orderBy(desc(books.volumeNumber))
 		.limit(1);
 
-	const [featuredCharacter] = await db
+	const allCharacters = await db
 		.select()
 		.from(characters)
 		.where(eq(characters.status, "published"))
-		.limit(1);
-
-	const otherCharacters = featuredCharacter
-		? await db
-				.select()
-				.from(characters)
-				.where(and(eq(characters.status, "published"), ne(characters.id, featuredCharacter.id)))
-				.limit(6)
-		: [];
+		.orderBy(characters.name);
 
 	const allBooks = await db.select().from(books).where(eq(books.status, "published")).orderBy(books.volumeNumber);
 
@@ -308,14 +300,16 @@ export default async function Home() {
 				>
 					Meet the Cast
 				</h2>
-				{otherCharacters.length > 0 ? (
-					<div className="char-grid">
-						{otherCharacters.map((character) => (
-							<CharacterTile key={character.id} character={character} />
-						))}
+				{allCharacters.length > 0 ? (
+					<div className="char-carousel">
+						<div className="char-carousel-track">
+							{[...allCharacters, ...allCharacters].map((character, i) => (
+								<CharacterTile key={`${character.id}-${i}`} character={character} />
+							))}
+						</div>
 					</div>
 				) : (
-					!featuredCharacter && <p style={{ color: "rgba(255,255,255,0.4)" }}>Characters coming soon.</p>
+					<p style={{ color: "rgba(255,255,255,0.4)" }}>Characters coming soon.</p>
 				)}
 				<a href="/characters" className="char-link" style={{ display: "inline-block", marginTop: "var(--space-6)" }}>
 					See all characters →

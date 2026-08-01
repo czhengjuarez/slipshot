@@ -220,42 +220,45 @@ export default async function Home() {
 					>
 						Get the Novels
 					</h2>
-					<div style={{ maxWidth: 720, marginBottom: "var(--space-8)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7 }}>
-						<p style={{ marginBottom: "var(--space-4)" }}>
-							Welcome to a world where ancient secrets hold the key to Earth&rsquo;s future. The Slipshot Series
-							delivers thrills, unforgettable characters, and a mystery that deepens with every page.
-						</p>
-						<p style={{ marginBottom: "var(--space-4)" }}>
-							In Vol. 1.0, follow Frederick and Opal as they unravel the hidden ties between our world and the
-							otherworldly Griddish Realm, facing strange machines, sudden black holes, and unexpected battles.
-						</p>
-						<p style={{ marginBottom: "var(--space-4)" }}>
-							In Vol. 2.0, step into the life of Cythiria—an angsty yet determined teenager—who must piece
-							together her fractured past while facing a destiny that could change everything.
-						</p>
-						<p>
-							In Vol 3.0, a new rival has entered the scene—Mora Thrembroke, fierce, relentless, and burning with
-							a grudge. As Cythiria reels from Blinky&rsquo;s cryptic warning, Mora begins her pursuit—and she
-							won&rsquo;t stop until the past is rewritten in blood.
-						</p>
+					<div style={{ display: "flex", gap: "var(--space-10)", flexWrap: "wrap", alignItems: "flex-start" }}>
+						<div style={{ flex: "1 1 400px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7 }}>
+							<p style={{ marginBottom: "var(--space-4)" }}>
+								Welcome to a world where ancient secrets hold the key to Earth&rsquo;s future. The Slipshot
+								Series delivers thrills, unforgettable characters, and a mystery that deepens with every page.
+							</p>
+							<p style={{ marginBottom: "var(--space-4)" }}>
+								In Vol. 1.0, follow Frederick and Opal as they unravel the hidden ties between our world and
+								the otherworldly Griddish Realm, facing strange machines, sudden black holes, and unexpected
+								battles.
+							</p>
+							<p style={{ marginBottom: "var(--space-4)" }}>
+								In Vol. 2.0, step into the life of Cythiria—an angsty yet determined teenager—who must piece
+								together her fractured past while facing a destiny that could change everything.
+							</p>
+							<p style={{ marginBottom: "var(--space-6)" }}>
+								In Vol 3.0, a new rival has entered the scene—Mora Thrembroke, fierce, relentless, and burning
+								with a grudge. As Cythiria reels from Blinky&rsquo;s cryptic warning, Mora begins her
+								pursuit—and she won&rsquo;t stop until the past is rewritten in blood.
+							</p>
+							<a href="/the-novel" className="char-link">
+								See all volumes →
+							</a>
+						</div>
+						<div className="book-stack" style={{ flex: "1 1 320px" }}>
+							{allBooks.map((book) => {
+								const coverUrl = mediaUrl(book.coverImageKey);
+								return (
+									<a key={book.id} href="/the-novel" className="book-stack-item">
+										{coverUrl && (
+											// eslint-disable-next-line @next/next/no-img-element
+											<img src={coverUrl} alt={book.title} className="book-stack-cover" />
+										)}
+										<p className="book-stack-label">{book.title}</p>
+									</a>
+								);
+							})}
+						</div>
 					</div>
-					<div className="book-stack">
-						{allBooks.map((book) => {
-							const coverUrl = mediaUrl(book.coverImageKey);
-							return (
-								<a key={book.id} href="/the-novel" className="book-stack-item">
-									{coverUrl && (
-										// eslint-disable-next-line @next/next/no-img-element
-										<img src={coverUrl} alt={book.title} className="book-stack-cover" />
-									)}
-									<p className="book-stack-label">{book.title}</p>
-								</a>
-							);
-						})}
-					</div>
-					<a href="/the-novel" className="char-link" style={{ display: "inline-block", marginTop: "var(--space-8)" }}>
-						See all volumes →
-					</a>
 				</section>
 			)}
 

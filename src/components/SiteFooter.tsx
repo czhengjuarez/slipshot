@@ -18,7 +18,7 @@ export function SiteFooter() {
 					/>
 					<button
 						type="submit"
-						className="btn-primary"
+						className="btn-ghost"
 						style={{ display: "block", width: "100%", textAlign: "center", marginTop: "var(--space-3)" }}
 					>
 						Submit

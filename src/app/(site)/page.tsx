@@ -79,19 +79,10 @@ export default async function Home() {
 							textTransform: "uppercase",
 							color: "#fff",
 							lineHeight: 1.05,
-							marginBottom: "var(--space-4)",
 						}}
 					>
-						{featuredBook?.title ?? "The Slipshot Universe"}
+						Codex Is Here
 					</h1>
-					{featuredBook?.summary && (
-						<p style={{ color: "rgba(255,255,255,0.8)", maxWidth: 440, marginBottom: "var(--space-6)" }}>
-							{featuredBook.summary}
-						</p>
-					)}
-					<a className="btn-primary" href="/the-novel">
-						Get the Novels
-					</a>
 				</div>
 				<div className="hero-signup">
 					<p className="hero-signup-label">Join the Insider List</p>
@@ -114,38 +105,6 @@ export default async function Home() {
 				</div>
 			</section>
 
-			{featuredCharacter && (
-				<section>
-					<div className="char-card">
-						<div className="char-card-art" style={{ background: featuredCharacter.accentColor }}>
-							<div className="dot-overlay" />
-							{featuredHeroUrl && (
-								// eslint-disable-next-line @next/next/no-img-element
-								<img
-									src={featuredHeroUrl}
-									alt=""
-									style={{
-										position: "relative",
-										zIndex: 1,
-										width: "100%",
-										height: "100%",
-										objectFit: "contain",
-									}}
-								/>
-							)}
-						</div>
-						<div className="char-card-content">
-							<div className="dot-overlay" />
-							{featuredCharacter.quote && <p className="char-quote">&ldquo;{featuredCharacter.quote}&rdquo;</p>}
-							{featuredCharacter.bio && <p className="char-bio">{featuredCharacter.bio}</p>}
-							<a className="char-link" href={`/characters/${featuredCharacter.slug}`}>
-								{featuredCharacter.name} &gt;&gt;
-							</a>
-						</div>
-					</div>
-				</section>
-			)}
-
 			<section className="story-banner">
 				<div
 					className="story-banner-left story-banner-half"
@@ -163,20 +122,22 @@ export default async function Home() {
 							bound to the Tenddrome. Every Slipshot Silo on its surface anchors a universe of its own.
 						</p>
 						<a className="btn-ghost" href="/characters">
-							Meet the Slaves &gt;&gt;
+							Meet Them Here &gt;&gt;
 						</a>
 					</div>
 				</div>
 				<div
 					className="story-banner-right story-banner-half"
 					style={
-						mediaUrl(varsAccent?.heroImageKey)
-							? ({ ["--bg-url" as string]: `url(${mediaUrl(varsAccent?.heroImageKey)})` } as React.CSSProperties)
+						mediaUrl("home/16eec919-025c-4fcb-903f-768315431f04.png")
+							? ({
+									["--bg-url" as string]: `url(${mediaUrl("home/16eec919-025c-4fcb-903f-768315431f04.png")})`,
+								} as React.CSSProperties)
 							: undefined
 					}
 				>
-					<style>{`.story-banner-right::before { background-image: var(--bg-url); }`}</style>
-					<div className="story-banner-content">
+					<style>{`.story-banner-right::before { background-image: var(--bg-url); background-position: top left; }`}</style>
+					<div className="story-banner-content" style={{ marginLeft: "auto", textAlign: "right" }}>
 						<h2 className="story-banner-title">The Vars</h2>
 						<p className="story-banner-text">
 							Farth and Earth — twin experiments born from the same Slipshot technology, each shaped by
@@ -259,6 +220,25 @@ export default async function Home() {
 					>
 						Get the Novels
 					</h2>
+					<div style={{ maxWidth: 720, marginBottom: "var(--space-8)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7 }}>
+						<p style={{ marginBottom: "var(--space-4)" }}>
+							Welcome to a world where ancient secrets hold the key to Earth&rsquo;s future. The Slipshot Series
+							delivers thrills, unforgettable characters, and a mystery that deepens with every page.
+						</p>
+						<p style={{ marginBottom: "var(--space-4)" }}>
+							In Vol. 1.0, follow Frederick and Opal as they unravel the hidden ties between our world and the
+							otherworldly Griddish Realm, facing strange machines, sudden black holes, and unexpected battles.
+						</p>
+						<p style={{ marginBottom: "var(--space-4)" }}>
+							In Vol. 2.0, step into the life of Cythiria—an angsty yet determined teenager—who must piece
+							together her fractured past while facing a destiny that could change everything.
+						</p>
+						<p>
+							In Vol 3.0, a new rival has entered the scene—Mora Thrembroke, fierce, relentless, and burning with
+							a grudge. As Cythiria reels from Blinky&rsquo;s cryptic warning, Mora begins her pursuit—and she
+							won&rsquo;t stop until the past is rewritten in blood.
+						</p>
+					</div>
 					<div className="book-stack">
 						{allBooks.map((book) => {
 							const coverUrl = mediaUrl(book.coverImageKey);

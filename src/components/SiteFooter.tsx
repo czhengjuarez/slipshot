@@ -8,7 +8,7 @@ export function SiteFooter() {
 					Slipshot
 				</div>
 				<p className="hero-signup-label">Join the Insider List</p>
-				<form action={subscribeToList}>
+				<form action={subscribeToList} style={{ width: "50%" }}>
 					<input
 						className="form-input"
 						type="email"

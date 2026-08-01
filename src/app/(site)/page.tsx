@@ -360,28 +360,6 @@ export default async function Home() {
 					</a>
 				</section>
 			)}
-
-			<section style={{ padding: "var(--space-16) var(--space-8)", display: "flex", justifyContent: "center" }}>
-				<div className="email-signup-dark">
-					<p className="hero-signup-label">Join the Insider List</p>
-					<form action={subscribeToList}>
-						<input
-							className="form-input"
-							type="email"
-							name="email"
-							placeholder="Enter your email address"
-							required
-						/>
-						<button
-							type="submit"
-							className="btn-primary"
-							style={{ display: "block", width: "100%", textAlign: "center", marginTop: "var(--space-3)" }}
-						>
-							Submit
-						</button>
-					</form>
-				</div>
-			</section>
 		</div>
 	);
 }

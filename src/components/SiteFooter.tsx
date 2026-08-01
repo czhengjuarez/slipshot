@@ -1,8 +1,29 @@
+import { subscribeToList } from "@/app/(site)/join-the-list/actions";
+
 export function SiteFooter() {
 	return (
 		<footer className="footer-preview">
 			<div>
-				<div className="footer-logo">Slipshot</div>
+				<div className="footer-logo" style={{ marginBottom: "var(--space-4)" }}>
+					Slipshot
+				</div>
+				<p className="hero-signup-label">Join the Insider List</p>
+				<form action={subscribeToList}>
+					<input
+						className="form-input"
+						type="email"
+						name="email"
+						placeholder="Enter your email address"
+						required
+					/>
+					<button
+						type="submit"
+						className="btn-primary"
+						style={{ display: "block", width: "100%", textAlign: "center", marginTop: "var(--space-3)" }}
+					>
+						Submit
+					</button>
+				</form>
 			</div>
 			<div className="footer-nav-col">
 				<a className="footer-link" href="/characters">
